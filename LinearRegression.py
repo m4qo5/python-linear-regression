@@ -1,11 +1,6 @@
-# How to implement Linear Regression in Python from scratch?
-Example of the Linear Regression class, written from scratch.
+import numpy as np
 
-This is a training example which could help understand more how linear regression works.
 
-## Code
-
-```python
 class LinearRegression:
     def __init__(self, learing_rate=0.01, n_iter=10000):
         self.learing_rate = learing_rate  # learning rate alpha hyperparemeter
@@ -46,18 +41,3 @@ class LinearRegression:
         y = np.hstack((np.ones((n_samples, 1)), (X-np.mean(X, 0)) \
                             / np.std(X, 0))) @ self.params
         return y
-```
-
-## How to use
-
-```python
-from sklearn.model_selection import train_test_split
-from sklearn.datasets import load_boston
-
-
-X, y = load_boston(return_X_y=True)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-regressor = LinearRegression(learing_rate=0.03, n_iter=3000)  # you can tune hyperparameters
-regressor.train(X, y)
-regressor.score()  # 75%, like in scikit-learn library
-```
